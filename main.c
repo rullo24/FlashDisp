@@ -34,7 +34,7 @@ int main() {
 	int window_centre_h = WINDOW_SIZE_H / 2; 
 
 	// init the window for the app
-	InitWindow(WINDOW_SIZE_W, WINDOW_SIZE_H, "FreqDisp"); // NOTE: known memory leak caused by this function --> others have mentioned it is resultant of the newer raylib versions
+	InitWindow(WINDOW_SIZE_W, WINDOW_SIZE_H, "FlashDisp"); // NOTE: known memory leak caused by this function --> others have mentioned it is resultant of the newer raylib versions
 
 	// infinite loop unless functions are true
 	if (!IsWindowReady()) {

@@ -6,7 +6,7 @@ LIBS = -lraylib $(RAYGUI_FLAGS) -lm -lX11
 # LIBS = -lraylib $(RAYGUI_FLAGS) -lm -lpthread -ldl -lGL -lrt -lX11
 
 # defining relevant binary specs
-TARGET = freq_disp 
+TARGET = flash_disp 
 SRCS = $(wildcard *.c)
 OBJS = $(SRCS:.c=.o)
 
