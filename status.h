@@ -1,8 +1,8 @@
 #ifndef STATUS_H
 #define STATUS_h
 
-#define COLOUR_1 LIGHTGRAY 
-#define COLOUR_2 RED 
+#define COLOUR_1 DARKGRAY 
+#define COLOUR_2 BLACK 
 
 #define SUCCESS 0
 #define NO_INIT_WINDOW_ERR -1

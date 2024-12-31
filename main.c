@@ -23,7 +23,7 @@
 int main() {
 	// init basic semi-global vars
 	int res = SUCCESS;
-	Color background_col = LIGHTGRAY;
+	Color background_col = COLOUR_1;
 
 	// checking if hardcoded spacing will fit within the screen
 	if (WINDOW_SIZE_H <= (2 * WIDGET_DEF_H + 2 * WIDGET_SPACING_H + TEXT_DEF_FONTSIZE + (TEXT_DEF_FONTSIZE/2))) {
@@ -34,13 +34,13 @@ int main() {
 	int window_centre_h = WINDOW_SIZE_H / 2; 
 
 	// init the window for the app
-	InitWindow(WINDOW_SIZE_W, WINDOW_SIZE_H, "FreqDisp");
+	InitWindow(WINDOW_SIZE_W, WINDOW_SIZE_H, "FreqDisp"); // NOTE: known memory leak caused by this function --> others have mentioned it is resultant of the newer raylib versions
 
 	// infinite loop unless functions are true
 	if (!IsWindowReady()) {
 		fprintf(stderr, "ERROR: failed to init the window\n");
 		res = NO_INIT_WINDOW_ERR;
-		goto out_close_window;
+		goto out_basic;
 	}
 
 	// init memory for timing purposes
@@ -88,7 +88,7 @@ int main() {
 			
 			// actioning the start button being clicked --> updating refreshing freq
 			if (button_start_clicked || IsKeyPressed(KEY_ENTER)) {
-				if (MIN_FLASH_HZ <= usr_val_flash_hz <= MAX_FLASH_HZ) { // checking value is within the specified bounds
+				if (MIN_FLASH_HZ <= usr_val_flash_hz && usr_val_flash_hz <= MAX_FLASH_HZ) { // checking value is within the specified bounds
 				 	if (usr_val_flash_hz != 0) { // avoiding division by zero error
 						time_between_flashes_s = 1.0 / (double)usr_val_flash_hz; // t[s] = 1 / f[Hz]
 					} else {
@@ -101,7 +101,7 @@ int main() {
 			}   
 
 			// drawing diagnostics values
-			if (back_hz_to_str) { // ensuring that the string is not NULL
+			if (back_hz_to_str != NULL) { // ensuring that the string is not NULL
 				DrawText(back_hz_to_str, text_flash_hz_size.x, text_flash_hz_size.y, text_flash_hz_size.height, YELLOW); // draws the current flashing speed
 			}
 			DrawFPS(0, 0); // simply for rationality purposes --> drawn at top left

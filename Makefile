@@ -1,8 +1,9 @@
 # defining compiler flags
 CC = gcc
-CFLAGS = -Wall -Wextra -pedantic -O3 -g
+CFLAGS = -Wall -Wextra -pedantic -fsanitize=address -fstack-protector -Wno-unused-parameter
 RAYGUI_FLAGS = -L./ext/raygui -fpic -DRAYGUI_IMPLEMENTATION
-LIBS = -lraylib $(RAYGUI_FLAGS) -lm -lpthread -ldl -lGL -lrt -lX11
+LIBS = -lraylib $(RAYGUI_FLAGS) -lm -lX11
+# LIBS = -lraylib $(RAYGUI_FLAGS) -lm -lpthread -ldl -lGL -lrt -lX11
 
 # defining relevant binary specs
 TARGET = freq_disp 
